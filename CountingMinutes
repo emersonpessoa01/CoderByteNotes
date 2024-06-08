@@ -1,0 +1,36 @@
+function CountingMinutes(str) {
+
+  function convertToMinutes(time) {
+    let [hour, minutePart] = time.split(":");
+    let minute = parseInt(minutePart.slice(0, -2));
+    let period = minutePart.slice(-2).toLowerCase();
+
+    hour = parseInt(hour);
+    if (period === "pm" && hour !== 12) {
+      hour += 12;
+    } else if (period === "am" && hour === 12) {
+      hour = 0;
+
+    }
+    return hour * 60 + minute;
+
+  }
+  let [start, end] = str.split("-");
+  let startMinutes = convertToMinutes(start);
+  let endMinutes = convertToMinutes(end);
+
+  let difference;
+  if (endMinutes >= startMinutes) {
+    difference = endMinutes - startMinutes;
+  } else {
+    difference = (1440 - startMinutes) + endMinutes;
+  }
+  return difference;
+}
+
+console.log(CountingMinutes("12:30pm-12:00am"));
+console.log(CountingMinutes("1:23am-1:08am"));
+
+
+// keep this function call here 
+console.log(CountingMinutes(readline()));

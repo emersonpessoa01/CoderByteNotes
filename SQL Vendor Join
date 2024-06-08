@@ -13,4 +13,4 @@ FROM maintable_LRF6B t1
 JOIN cb_vendorinformation vi
 ON t1.GroupID = vi.GroupID
 GROUP BY CompanyName
-ORDER BY Count ASC, GroupID ASC
+ORDER BY Count ASC, GroupID DESC
